@@ -15,13 +15,10 @@ const useDataApi = (initialUrl, initialData) => {
       try {
         const result = await axios(url);
         if (!didCancel) {
-          console.log("here1");
-          console.log(result.data);
           dispatch({ type: "FETCH_SUCCESS", payload: result.data });
         }
       } catch (error) {
         if (!didCancel) {
-          console.log("here2");
           dispatch({ type: "FETCH_FAILURE" });
         }
       }
@@ -92,8 +89,6 @@ function App() {
         <div>Loading ...</div>
       ) : (
         <ul className="list-group">
-          {console.log("HERE3")}
-          {console.log(data)}
           {Object.values(data).map((item) => (
             <li key={item.id} className="list-group-item">
               <a href={item.url}>{item.author}</a>
